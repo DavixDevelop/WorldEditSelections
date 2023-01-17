@@ -1,0 +1,47 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.0.0" apply false
+}
+
+group = 'com.davixdevelop'
+version = '1.0.' + ('git rev-list --count HEAD'.execute().text.trim()) + '-1.12.2'
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+
+    group = parent.group
+    version = parent.version
+
+    def targetJavaVersion = property('javaVersion') as int
+    java {
+        def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+        //sourceCompatibility = javaVersion
+        //targetCompatibility = javaVersion
+
+        
+       
+        
+        if (JavaVersion.current() < javaVersion) {
+            toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) { 
+            options.release = targetJavaVersion
+        }
+    }
+
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'enginehub-maven'
+            url = 'https://maven.enginehub.org/repo/'
+        }
+
+        maven {
+            name = 'sponge'
+            url = 'https://repo.spongepowered.org/maven'
+        }
+    }
+}

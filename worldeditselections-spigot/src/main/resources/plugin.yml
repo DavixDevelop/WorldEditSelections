@@ -1,0 +1,8 @@
+name: WorldEditSelections
+version: '${version}'
+main: com.davixdevelop.worldeditselections.WorldEditSelectionsSpigot
+load: STARTUP
+depend: [ WorldEdit ]
+authors: [ DavixDevelop ]
+description: Plugin for WorldEdit 6 which enables loading/saving WorldEdit selections
+website: https://github.com/DavixDevelop/WorldEditSelections

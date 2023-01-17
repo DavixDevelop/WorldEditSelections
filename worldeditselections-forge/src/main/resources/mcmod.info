@@ -1,0 +1,17 @@
+[
+    {
+        "modid": "worldeditselections-forge",
+        "name": "WorldEditSelections",
+        "description": "Mod for WorldEdit 6 which enables loading/saving WorldEdit selections",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "https://github.com/DavixDevelop/WorldEditSelections",
+        "updateUrl": "",
+        "authorList": ["DavixDevelop"],
+        "credits": "",
+        "logoFile": "logo.png",
+        "screenshots": [],
+        "requiredMods" : ["worldedit"],
+        "dependencies": ["worldedit"]
+    }
+]

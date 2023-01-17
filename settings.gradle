@@ -1,0 +1,3 @@
+rootProject.name = 'WorldEditSelections'
+
+include 'worldeditselections-common', 'worldeditselections-spigot', 'worldeditselections-forge'

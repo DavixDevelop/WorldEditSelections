@@ -1,0 +1,10 @@
+/*plugins  {
+    id 'java-library'
+    id 'maven-publish'
+}*/
+
+apply plugin: 'java-library'
+
+dependencies {
+    implementation "com.sk89q.worldedit:worldedit-core:6.1.4-SNAPSHOT"
+}
