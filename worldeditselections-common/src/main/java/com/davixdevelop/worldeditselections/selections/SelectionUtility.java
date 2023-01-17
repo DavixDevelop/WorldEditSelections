@@ -17,7 +17,13 @@ import com.sk89q.worldedit.regions.selector.SphereRegionSelector;
 import com.sk89q.worldedit.session.SessionManager;
 
 import java.io.*;
+import java.nio.file.Files;
 
+/**
+ * A utility class for working with WorldEdit selections
+ *
+ * @author DavixDevelop
+ */
 public class SelectionUtility {
     Gson gson;
 
@@ -25,6 +31,12 @@ public class SelectionUtility {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
+    /**
+     * Save a WorldEdit selection of a player to the WorldEdit/selections folder
+     * @param selectionName The name of the selection
+     * @param player The player from which to save the selection
+     * @throws CommandException Throws an exception if user didn't make a selection
+     */
     public void saveSelection(String selectionName, Player player) throws CommandException {
         try {
             SessionManager sessionManager = WorldEdit.getInstance().getSessionManager();
@@ -68,7 +80,7 @@ public class SelectionUtility {
                     createParentFolders(selectionFile);
 
                     try {
-                        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(selectionFile));
+                        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(Files.newOutputStream(selectionFile.toPath()));
                         PrintWriter writer = new PrintWriter(bufferedOutputStream);
                         writer.write(rawJson);
                         writer.close();
@@ -87,6 +99,12 @@ public class SelectionUtility {
         }
     }
 
+    /**
+     * Load a saved WorldEdit selection and set's it to the player
+     * @param selectionName The name of the selection
+     * @param player The player to which to set to the selection
+     * @throws CommandException Throws and error if no session exists for the player or if any other exception occurred
+     */
     public void loadSelection(String selectionName, Player player) throws CommandException{
         try {
             File dir = WorldEdit.getInstance().getWorkingDirectoryFile("selections");
@@ -96,7 +114,7 @@ public class SelectionUtility {
                 throw new CommandException(String.format("Selection with name: %s does not exist", selectionName));
             }
 
-            InputStream inputStream = new FileInputStream(selectionFile);
+            InputStream inputStream = Files.newInputStream(selectionFile.toPath());
             Reader reader = new InputStreamReader(inputStream);
 
             JsonSelection jsonSelection = gson.fromJson(reader, JsonSelection.class);
@@ -111,7 +129,7 @@ public class SelectionUtility {
                 throw new CommandException("No session found for player");
             }
 
-            inputStream = new FileInputStream(selectionFile);
+            inputStream = Files.newInputStream(selectionFile.toPath());
             reader = new InputStreamReader(inputStream);
 
             switch (jsonSelection.getSelectionType()){
@@ -167,7 +185,6 @@ public class SelectionUtility {
     public static BlockVector toBlockVector(JsonBlockVector jsonBlockVector){
         return new BlockVector(jsonBlockVector.getX(), jsonBlockVector.getY(), jsonBlockVector.getZ());
     }
-
     public static Vector toVector(JsonVector vector){
         return new Vector(vector.getX(), vector.getY(), vector.getZ());
     }

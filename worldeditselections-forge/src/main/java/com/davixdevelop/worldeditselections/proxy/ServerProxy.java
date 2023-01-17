@@ -9,6 +9,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Sided proxy used on servers
+ *
+ * @author DavixDevelop
+ */
 @SideOnly(value = Side.SERVER)
 public class ServerProxy implements IProxy {
     public void postInit(FMLPostInitializationEvent event){

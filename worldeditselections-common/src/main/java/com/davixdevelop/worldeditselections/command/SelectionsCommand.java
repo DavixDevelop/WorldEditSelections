@@ -13,10 +13,18 @@ import com.sk89q.worldedit.util.command.SimpleDescription;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * WorldEdit command to save/load WorldEdit selections
+ *
+ * @author DavixDevelop
+ */
 public class SelectionsCommand implements CommandCallable {
 
     boolean isRemote;
 
+    /**
+     * @return Returns true if command is run on a remote server
+     */
     public boolean isRemote() {
         return isRemote;
     }
@@ -102,7 +110,7 @@ public class SelectionsCommand implements CommandCallable {
     }
 
     @Override
-    public List<String> getSuggestions(String arguments, CommandLocals locals) throws CommandException {
+    public List<String> getSuggestions(String arguments, CommandLocals locals) {
         if(arguments.length() == 0) {
             List<String> suggestions = new ArrayList<>();
             suggestions.add("save <selection_name> (No white spaces)");

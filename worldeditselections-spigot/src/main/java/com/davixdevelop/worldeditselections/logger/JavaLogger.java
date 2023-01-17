@@ -2,6 +2,11 @@ package com.davixdevelop.worldeditselections.logger;
 
 import java.util.logging.Logger;
 
+/**
+ * Simple implementation of a logger through which to send error/debug messages, based on the default Java Logger
+ *
+ * @author DavixDevelop
+ */
 public class JavaLogger implements ILogger{
     Logger logger;
 

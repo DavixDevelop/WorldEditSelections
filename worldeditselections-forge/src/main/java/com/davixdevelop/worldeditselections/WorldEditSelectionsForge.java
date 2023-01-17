@@ -1,19 +1,18 @@
 package com.davixdevelop.worldeditselections;
 
-import com.davixdevelop.worldeditselections.logger.ApacheLogger;
+import com.davixdevelop.worldeditselections.logger.Log4jLogger;
 import com.davixdevelop.worldeditselections.logger.ILogger;
 import com.davixdevelop.worldeditselections.proxy.IProxy;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
+/**
+ * Main class for the WorldEditSelections Forge mod
+ *
+ * @author DavixDevelop
+ */
 @Mod(
         modid = WorldEditSelectionsForge.MOD_ID,
         name = WorldEditSelectionsForge.MOD_NAME,
@@ -29,7 +28,7 @@ public class WorldEditSelectionsForge {
     public static final String WORLD_EDIT = "required-after:worldedit;";
 
     private static ILogger logger;
-    public static ILogger getLogger() {return logger;};
+    public static ILogger getLogger() {return logger;}
 
     @SidedProxy(clientSide = "com.davixdevelop.worldeditselections.proxy.ClientProxy", serverSide = "com.davixdevelop.worldeditselections.proxy.ServerProxy")
     public static IProxy proxy;
@@ -43,8 +42,8 @@ public class WorldEditSelectionsForge {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        logger = new ApacheLogger(event.getModLog());
-        WorldEditSelections.init(new WorldEditSelections(), logger);
+        logger = new Log4jLogger(event.getModLog());
+        WorldEditSelections.init(logger);
     }
 
     @Mod.EventHandler

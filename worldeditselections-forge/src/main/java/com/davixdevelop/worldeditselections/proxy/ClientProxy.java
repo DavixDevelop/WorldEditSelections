@@ -9,6 +9,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Sided proxy used on clients
+ *
+ * @author DavixDevelop
+ */
 @SideOnly(value = Side.CLIENT)
 public class ClientProxy implements IProxy {
     @Override
