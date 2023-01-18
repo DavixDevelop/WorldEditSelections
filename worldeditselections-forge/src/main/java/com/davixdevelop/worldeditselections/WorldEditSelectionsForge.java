@@ -47,7 +47,7 @@ public class WorldEditSelectionsForge {
     }
 
     @Mod.EventHandler
-    public void postinit(FMLPostInitializationEvent event) {
+    public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
     }
 }
