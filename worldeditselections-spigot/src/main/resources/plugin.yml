@@ -1,4 +1,4 @@
-name: WorldEditSelections
+name: WorldEditSelections-Legacy
 version: '${version}'
 main: com.davixdevelop.worldeditselections.WorldEditSelectionsSpigot
 load: STARTUP

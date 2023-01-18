@@ -21,8 +21,8 @@ import net.minecraftforge.fml.common.Mod;
 )
 public class WorldEditSelectionsForge {
 
-    public static final String MOD_ID = "worldeditselections-forge";
-    public static final String MOD_NAME = "WorldEditSelections";
+    public static final String MOD_ID = "worldeditselections-legacy-forge";
+    public static final String MOD_NAME = "WorldEditSelections-Legacy";
     public static final String VERSION = "1.0";
 
     public static final String WORLD_EDIT = "required-after:worldedit;";
@@ -47,7 +47,7 @@ public class WorldEditSelectionsForge {
     }
 
     @Mod.EventHandler
-    public void postinit(FMLPostInitializationEvent event) {
+    public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
     }
 }

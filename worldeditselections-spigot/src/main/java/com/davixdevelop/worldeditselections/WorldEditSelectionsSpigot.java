@@ -17,19 +17,9 @@ public final class WorldEditSelectionsSpigot extends JavaPlugin {
     @Override
     public void onLoad() {
         WorldEditSelections.init(new JavaLogger(getLogger()));
-        WorldEditSelections.getLogger().sendDebug("Loading WorldEditSelections Plugin");
+        WorldEditSelections.getLogger().sendDebug("Loading WorldEditSelections-Legacy Plugin");
         CommandManager commandManager= WorldEdit.getInstance().getPlatformManager().getCommandManager();
         Dispatcher dispatcher = commandManager.getDispatcher();
         dispatcher.registerCommand(new SelectionsCommand(true), "/selection");
-    }
-
-    @Override
-    public void onEnable() {
-
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
     }
 }

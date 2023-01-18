@@ -1,7 +1,7 @@
 [
     {
-        "modid": "worldeditselections-forge",
-        "name": "WorldEditSelections",
+        "modid": "worldeditselections-legacy-forge",
+        "name": "WorldEditSelections-Legacy",
         "description": "Mod for WorldEdit 6 which enables loading/saving WorldEdit selections",
         "version": "${version}",
         "mcversion": "${mcversion}",
