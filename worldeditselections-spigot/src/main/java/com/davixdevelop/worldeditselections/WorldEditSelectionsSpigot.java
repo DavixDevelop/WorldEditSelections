@@ -22,14 +22,4 @@ public final class WorldEditSelectionsSpigot extends JavaPlugin {
         Dispatcher dispatcher = commandManager.getDispatcher();
         dispatcher.registerCommand(new SelectionsCommand(true), "/selection");
     }
-
-    @Override
-    public void onEnable() {
-
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
 }
